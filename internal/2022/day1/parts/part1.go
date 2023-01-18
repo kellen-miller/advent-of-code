@@ -1,14 +1,13 @@
-package main
+package parts
 
 import (
 	"bufio"
-	"fmt"
 	"strconv"
 
 	"AdventOfCode/pkg/io"
 )
 
-func main() {
+func MostCalories() int {
 	var (
 		file, closeFn = io.OpenInput("internal/2022/day1/input.txt")
 		maxCals       int
@@ -22,7 +21,6 @@ func main() {
 		currentCals += cals
 
 		if err != nil {
-			fmt.Println(currentCals, maxCals)
 			if currentCals > maxCals {
 				maxCals = currentCals
 			}
@@ -31,8 +29,8 @@ func main() {
 	}
 
 	if currentCals > maxCals {
-		fmt.Println(currentCals)
-	} else {
-		fmt.Println(maxCals)
+		maxCals = currentCals
 	}
+
+	return maxCals
 }

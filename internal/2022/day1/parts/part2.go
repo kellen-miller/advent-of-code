@@ -1,8 +1,7 @@
-package main
+package parts
 
 import (
 	"bufio"
-	"fmt"
 	"strconv"
 
 	"AdventOfCode/pkg/io"
@@ -10,17 +9,17 @@ import (
 	"github.com/emirpasic/gods/trees/binaryheap"
 )
 
-type Heap struct {
-	capacity int
+type CapacityHeap struct {
+	Capacity int
 	*binaryheap.Heap
 }
 
-func main() {
+func Top3Calories() ([]interface{}, int) {
 	var (
 		file, closeFn = io.OpenInput("internal/2022/day1/input.txt")
 		sc            = bufio.NewScanner(file)
-		elfHeap       = &Heap{
-			capacity: 3,
+		elfHeap       = &CapacityHeap{
+			Capacity: 3,
 			Heap:     binaryheap.NewWithIntComparator(),
 		}
 		currentCals int
@@ -42,16 +41,15 @@ func main() {
 		sum += val.(int)
 	}
 
-	fmt.Println("vals: ", elfHeap.Values())
-	fmt.Println("sum: ", sum)
+	return elfHeap.Values(), sum
 }
 
-func (h *Heap) push(val int) {
-	if h.Size() < h.capacity {
+func (h *CapacityHeap) push(val int) {
+	if h.Size() < h.Capacity {
 		h.Push(val)
 	} else {
-		peek, _ := h.Peek()
-		if peek.(int) < val {
+		peek, notEmpty := h.Peek()
+		if notEmpty && peek.(int) < val {
 			h.Pop()
 			h.Push(val)
 		}
