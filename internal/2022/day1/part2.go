@@ -10,7 +10,7 @@ import (
 	"github.com/emirpasic/gods/trees/binaryheap"
 )
 
-type HeapWithCapacity struct {
+type Heap struct {
 	capacity int
 	*binaryheap.Heap
 }
@@ -19,7 +19,7 @@ func main() {
 	var (
 		file, closeFn = io.OpenInput("internal/2022/day1/input.txt")
 		sc            = bufio.NewScanner(file)
-		elfHeap       = &HeapWithCapacity{
+		elfHeap       = &Heap{
 			capacity: 3,
 			Heap:     binaryheap.NewWithIntComparator(),
 		}
@@ -46,7 +46,7 @@ func main() {
 	fmt.Println("sum: ", sum)
 }
 
-func (h *HeapWithCapacity) push(val int) {
+func (h *Heap) push(val int) {
 	if h.Size() < h.capacity {
 		h.Push(val)
 	} else {
