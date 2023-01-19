@@ -1,0 +1,51 @@
+package parts
+
+import (
+	"bufio"
+
+	"AdventOfCode/pkg/io"
+)
+
+const (
+	win      = 6
+	draw     = 3
+	loss     = 0
+	rock     = 0
+	paper    = 1
+	scissors = 2
+)
+
+func TotalScore() int {
+	file, closeFn := io.OpenInput("internal/2022/day2/input.txt")
+	defer closeFn(file)
+
+	var (
+		total    int
+		scanner  = bufio.NewScanner(file)
+		scoreMap = map[uint8]int{
+			'A': rock,
+			'X': rock,
+			'B': paper,
+			'Y': paper,
+			'C': scissors,
+			'Z': scissors,
+		}
+	)
+
+	for scanner.Scan() {
+		var (
+			line      = scanner.Text()
+			oppChoice = scoreMap[line[0]]
+			myChoice  = scoreMap[line[2]]
+		)
+
+		total += myChoice + 1
+		if oppChoice == myChoice {
+			total += draw
+		} else if oppChoice+1 == myChoice || oppChoice-2 == myChoice {
+			total += win
+		}
+	}
+
+	return total
+}
