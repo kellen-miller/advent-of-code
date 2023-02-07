@@ -9,7 +9,7 @@ import (
 
 func BadgePriorityTotalParallelGroups(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	file, closeFn := io.OpenInput(input)

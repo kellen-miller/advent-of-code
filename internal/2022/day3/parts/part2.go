@@ -3,6 +3,7 @@ package parts
 import (
 	"bufio"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
@@ -12,7 +13,7 @@ const (
 
 func BadgePriorityTotal(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	file, closeFn := io.OpenInput(input)
@@ -46,7 +47,7 @@ func findGroupBadgePriority(groups []string) int {
 		for _, badge := range group {
 			badgeVal := badge - 'A'
 
-			if badgesFoundInGroup[badgeVal] == false {
+			if !badgesFoundInGroup[badgeVal] {
 				badgesFoundInGroup[badgeVal] = true
 				countGroupsBadgeFound[badgeVal]++
 			}

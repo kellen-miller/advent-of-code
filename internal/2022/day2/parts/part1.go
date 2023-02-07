@@ -3,6 +3,7 @@ package parts
 import (
 	"bufio"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
@@ -17,7 +18,7 @@ const (
 
 func TotalScore(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	file, closeFn := io.OpenInput(input)

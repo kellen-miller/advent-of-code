@@ -3,12 +3,13 @@ package parts
 import (
 	"bufio"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
 func SetRoundResult(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	file, closeFn := io.OpenInput(input)

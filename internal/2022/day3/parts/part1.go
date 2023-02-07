@@ -3,12 +3,13 @@ package parts
 import (
 	"bufio"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
 func SuppliesPriorityTotal(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	file, closeFn := io.OpenInput(input)
@@ -50,10 +51,8 @@ func findRucksackPriority(line string) int {
 	for i, char := range line {
 		if i < compartment2Start {
 			compartment1Counts[char-'A']++
-		} else {
-			if compartment1Counts[char-'A'] > 0 {
-				return letterScore(char)
-			}
+		} else if compartment1Counts[char-'A'] > 0 {
+			return letterScore(char)
 		}
 	}
 

@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"strconv"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 	"adventofcode/pkg/structures"
 
@@ -12,7 +13,7 @@ import (
 
 func Top3Calories(input string) ([]int, int) {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	var (

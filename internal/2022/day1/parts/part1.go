@@ -4,12 +4,13 @@ import (
 	"bufio"
 	"strconv"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
 func MostCalories(input string) int {
 	if input == "" {
-		input = "input.txt"
+		input = internal.Input
 	}
 
 	var (
