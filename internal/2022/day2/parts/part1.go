@@ -3,7 +3,7 @@ package parts
 import (
 	"bufio"
 
-	"AdventOfCode/pkg/io"
+	"adventofcode/pkg/io"
 )
 
 const (
@@ -15,8 +15,12 @@ const (
 	scissors = 2
 )
 
-func TotalScore() int {
-	file, closeFn := io.OpenInput("internal/2022/day2/input.txt")
+func TotalScore(input string) int {
+	if input == "" {
+		input = "input.txt"
+	}
+
+	file, closeFn := io.OpenInput(input)
 	defer closeFn(file)
 
 	var (

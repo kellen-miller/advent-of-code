@@ -4,15 +4,19 @@ import (
 	"bufio"
 	"strconv"
 
-	"AdventOfCode/pkg/io"
-	"AdventOfCode/pkg/structures"
+	"adventofcode/pkg/io"
+	"adventofcode/pkg/structures"
 
 	"github.com/ugurcsen/gods-generic/trees/binaryheap"
 )
 
-func Top3Calories() ([]int, int) {
+func Top3Calories(input string) ([]int, int) {
+	if input == "" {
+		input = "input.txt"
+	}
+
 	var (
-		file, closeFn = io.OpenInput("internal/2022/day1/input.txt")
+		file, closeFn = io.OpenInput(input)
 		sc            = bufio.NewScanner(file)
 		elfHeap       = &structures.CapacityHeap[int]{
 			Capacity: 3,

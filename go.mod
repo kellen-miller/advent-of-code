@@ -1,4 +1,4 @@
-module AdventOfCode
+module adventofcode
 
 go 1.19
 

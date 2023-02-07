@@ -4,12 +4,16 @@ import (
 	"bufio"
 	"strconv"
 
-	"AdventOfCode/pkg/io"
+	"adventofcode/pkg/io"
 )
 
-func MostCalories() int {
+func MostCalories(input string) int {
+	if input == "" {
+		input = "input.txt"
+	}
+
 	var (
-		file, closeFn = io.OpenInput("internal/2022/day1/input.txt")
+		file, closeFn = io.OpenInput(input)
 		maxCals       int
 		currentCals   int
 	)

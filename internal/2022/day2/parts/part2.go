@@ -3,11 +3,15 @@ package parts
 import (
 	"bufio"
 
-	"AdventOfCode/pkg/io"
+	"adventofcode/pkg/io"
 )
 
-func SetRoundResult() int {
-	file, closeFn := io.OpenInput("internal/2022/day2/input.txt")
+func SetRoundResult(input string) int {
+	if input == "" {
+		input = "input.txt"
+	}
+
+	file, closeFn := io.OpenInput(input)
 	defer closeFn(file)
 
 	var (
