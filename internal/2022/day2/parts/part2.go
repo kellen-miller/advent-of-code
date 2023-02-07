@@ -7,6 +7,10 @@ import (
 	"adventofcode/pkg/io"
 )
 
+const (
+	choices = 3
+)
+
 func SetRoundResult(input string) int {
 	if input == "" {
 		input = internal.Input
@@ -38,11 +42,11 @@ func SetRoundResult(input string) int {
 		total += resultWanted + 1
 		switch resultWanted {
 		case win:
-			total += (oppChoice + 1) % 3
+			total += (oppChoice + 1) % choices
 		case draw:
 			total += oppChoice
 		case loss:
-			total += (oppChoice + 2) % 3
+			total += (oppChoice + 2) % choices
 		}
 	}
 

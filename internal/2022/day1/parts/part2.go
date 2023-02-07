@@ -11,6 +11,10 @@ import (
 	"github.com/ugurcsen/gods-generic/trees/binaryheap"
 )
 
+const (
+	capacity = 3
+)
+
 func Top3Calories(input string) ([]int, int) {
 	if input == "" {
 		input = internal.Input
@@ -20,7 +24,7 @@ func Top3Calories(input string) ([]int, int) {
 		file, closeFn = io.OpenInput(input)
 		sc            = bufio.NewScanner(file)
 		elfHeap       = &structures.CapacityHeap[int]{
-			Capacity: 3,
+			Capacity: capacity,
 			Heap:     binaryheap.NewWithNumberComparator[int](),
 		}
 		currentCals int

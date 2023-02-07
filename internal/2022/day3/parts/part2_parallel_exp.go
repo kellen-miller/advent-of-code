@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"sync"
 
+	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
 
