@@ -74,3 +74,5 @@ Find the top three Elves carrying the most Calories. How many Calories are those
 ### Answer
 
 Sum of top 3 calories carried = sum([65852 66781 70369]) => 203002
+
+[1]: https://adventofcode.com/2022/day/1

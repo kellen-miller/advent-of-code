@@ -67,3 +67,6 @@ according to your strategy guide?
 ### Answer
 
 Set round result => 10274
+
+
+[1]: https://adventofcode.com/2022/day/2

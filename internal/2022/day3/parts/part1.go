@@ -43,7 +43,7 @@ func letterScore(letter rune) int {
 
 func findRucksackPriority(line string) int {
 	var (
-		compartment1Counts [maxLetterDifference]int
+		compartment1Counts = make([]int, maxLetterDifference)
 		compartment2Start  = len(line) / 2
 	)
 
