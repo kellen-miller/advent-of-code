@@ -1,8 +1,6 @@
 package parts
 
 import (
-	"bufio"
-
 	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
@@ -16,22 +14,18 @@ func BadgePriorityTotal(input string) int {
 		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
-	var (
-		scanner = bufio.NewScanner(file)
-		total   int
-	)
-
+	var total int
 	for {
 		groups := make([]string, groupSize)
 		for i := 0; i < groupSize; i++ {
-			if !scanner.Scan() {
+			if !sc.Scan() {
 				return total
 			}
 
-			groups[i] = scanner.Text()
+			groups[i] = sc.Text()
 		}
 
 		total += findGroupBadgePriority(groups)

@@ -1,8 +1,6 @@
 package parts
 
 import (
-	"bufio"
-
 	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
@@ -12,18 +10,13 @@ func SuppliesPriorityTotal(input string) int {
 		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
-	var (
-		scanner = bufio.NewScanner(file)
-		total   int
-	)
-
-	for scanner.Scan() {
-		total += findRucksackPriority(scanner.Text())
+	var total int
+	for sc.Scan() {
+		total += findRucksackPriority(sc.Text())
 	}
-
 	return total
 }
 

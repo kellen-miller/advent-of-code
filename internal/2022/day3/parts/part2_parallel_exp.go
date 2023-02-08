@@ -1,7 +1,6 @@
 package parts
 
 import (
-	"bufio"
 	"sync"
 
 	"adventofcode/internal"
@@ -13,23 +12,22 @@ func BadgePriorityTotalParallelGroups(input string) int {
 		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
 	var (
-		scanner = bufio.NewScanner(file)
-		total   int
-		wg      sync.WaitGroup
+		total int
+		wg    sync.WaitGroup
 	)
 
 	for {
 		rucksacks := make([]string, 0, groupSize)
 		for i := 0; i < groupSize; i++ {
-			if !scanner.Scan() {
+			if !sc.Scan() {
 				break
 			}
 
-			rucksacks = append(rucksacks, scanner.Text())
+			rucksacks = append(rucksacks, sc.Text())
 		}
 
 		if len(rucksacks) == 0 {
@@ -49,18 +47,17 @@ func BadgePriorityTotalParallelGroups(input string) int {
 
 func BadgePriorityTotalChannels(input string) int {
 	if input == "" {
-		input = "group.txt"
+		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
 	var (
-		scanner = bufio.NewScanner(file)
 		total   int
 		wg      sync.WaitGroup
-		results = make(chan int)
 		groups  = make(chan []string)
+		results = make(chan int)
 	)
 
 	wg.Add(1)
@@ -68,11 +65,11 @@ func BadgePriorityTotalChannels(input string) int {
 		for {
 			group := make([]string, 0, groupSize)
 			for i := 0; i < groupSize; i++ {
-				if !scanner.Scan() {
+				if !sc.Scan() {
 					break
 				}
 
-				group = append(group, scanner.Text())
+				group = append(group, sc.Text())
 			}
 
 			if len(group) == 0 {

@@ -1,7 +1,6 @@
 package parts
 
 import (
-	"bufio"
 	"strconv"
 
 	"adventofcode/internal"
@@ -13,19 +12,19 @@ func MostCalories(input string) int {
 		input = internal.Input
 	}
 
-	var (
-		file, closeFn = io.OpenInput(input)
-		maxCals       int
-		currentCals   int
-	)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
-	sc := bufio.NewScanner(file)
+	var (
+		maxCals     int
+		currentCals int
+	)
+
 	for sc.Scan() {
 		cals, err := strconv.Atoi(sc.Text())
 		currentCals += cals
 
-		if err != nil {
+		if err != nil { // new line
 			if currentCals > maxCals {
 				maxCals = currentCals
 			}

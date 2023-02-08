@@ -1,8 +1,6 @@
 package parts
 
 import (
-	"bufio"
-
 	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
@@ -16,12 +14,11 @@ func SetRoundResult(input string) int {
 		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
 	var (
 		total    int
-		scanner  = bufio.NewScanner(file)
 		scoreMap = map[uint8]int{
 			'A': rock,
 			'B': paper,
@@ -32,9 +29,9 @@ func SetRoundResult(input string) int {
 		}
 	)
 
-	for scanner.Scan() {
+	for sc.Scan() {
 		var (
-			line         = scanner.Text()
+			line         = sc.Text()
 			oppChoice    = scoreMap[line[0]]
 			resultWanted = scoreMap[line[2]]
 		)

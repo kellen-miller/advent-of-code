@@ -1,7 +1,6 @@
 package parts
 
 import (
-	"bufio"
 	"strconv"
 
 	"adventofcode/internal"
@@ -20,16 +19,16 @@ func Top3Calories(input string) ([]int, int) {
 		input = internal.Input
 	}
 
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
+
 	var (
-		file, closeFn = io.OpenInput(input)
-		sc            = bufio.NewScanner(file)
-		elfHeap       = &structures.CapacityHeap[int]{
+		elfHeap = &structures.CapacityHeap[int]{
 			Capacity: capacity,
 			Heap:     binaryheap.NewWithNumberComparator[int](),
 		}
 		currentCals int
 	)
-	defer closeFn(file)
 
 	for sc.Scan() {
 		cals, err := strconv.Atoi(sc.Text())

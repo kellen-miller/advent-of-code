@@ -1,8 +1,6 @@
 package parts
 
 import (
-	"bufio"
-
 	"adventofcode/internal"
 	"adventofcode/pkg/io"
 )
@@ -21,12 +19,11 @@ func TotalScore(input string) int {
 		input = internal.Input
 	}
 
-	file, closeFn := io.OpenInput(input)
-	defer closeFn(file)
+	sc, closeFile := io.GetScanner(input)
+	defer closeFile()
 
 	var (
 		total    int
-		scanner  = bufio.NewScanner(file)
 		scoreMap = map[uint8]int{
 			'A': rock,
 			'X': rock,
@@ -37,9 +34,9 @@ func TotalScore(input string) int {
 		}
 	)
 
-	for scanner.Scan() {
+	for sc.Scan() {
 		var (
-			line      = scanner.Text()
+			line      = sc.Text()
 			oppChoice = scoreMap[line[0]]
 			myChoice  = scoreMap[line[2]]
 		)
