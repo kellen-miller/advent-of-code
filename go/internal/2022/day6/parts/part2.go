@@ -17,10 +17,10 @@ func StartOfMessage(input string) []int {
 	sc, closeFn := io.GetScanner(input)
 	defer closeFn()
 
-	var ps []int
+	var ms []int
 	for sc.Scan() {
-		ps = append(ps, findUniqueSetOfSize(sc.Text(), messageStartSize))
+		ms = append(ms, findUniqueSetOfSize(sc.Text(), messageStartSize))
 	}
 
-	return ps
+	return ms
 }
