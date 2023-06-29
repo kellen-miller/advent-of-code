@@ -5,9 +5,13 @@ import (
 	"strconv"
 	"strings"
 
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 	sll "github.com/ugurcsen/gods-generic/lists/singlylinkedlist"
+)
+
+const (
+	crateDescLen = 3
 )
 
 type crate struct {
@@ -17,7 +21,7 @@ type crate struct {
 
 func RearrangeCrates(input string) string {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFn := io.GetScanner(input)
@@ -79,8 +83,8 @@ func getCrates(line string) []crate {
 	for pos, char := range line {
 		if char == '[' {
 			crates = append(crates, crate{
-				val:   line[pos : pos+3],
-				stack: (pos + 3) / 4,
+				val:   line[pos : pos+crateDescLen],
+				stack: (pos + crateDescLen) / (crateDescLen + 1),
 			})
 		}
 	}

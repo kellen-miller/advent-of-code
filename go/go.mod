@@ -1,4 +1,4 @@
-module adventofcode
+module github.com/kellen-miller/advent-of-code/go
 
 go 1.20
 

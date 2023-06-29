@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 
-	"adventofcode/internal/2022/day3/parts"
+	"github.com/kellen-miller/advent-of-code/go/internal/2022/day3/parts"
 )
 
 func main() {
 	input := "internal/2022/day3/input.txt"
-	// example := "internal/2022/day3/example.txt"
 
 	fmt.Println("--- Day 3: Rucksack Reorganization ---")
 

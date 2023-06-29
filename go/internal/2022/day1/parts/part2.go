@@ -3,9 +3,9 @@ package parts
 import (
 	"strconv"
 
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
-	"adventofcode/pkg/structures"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/pkg/structures"
 	"github.com/ugurcsen/gods-generic/trees/binaryheap"
 )
 
@@ -15,7 +15,7 @@ const (
 
 func Top3Calories(input string) ([]int, int) {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)

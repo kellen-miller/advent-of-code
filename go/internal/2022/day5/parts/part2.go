@@ -5,15 +5,15 @@ import (
 	"strconv"
 	"strings"
 
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 	sll "github.com/ugurcsen/gods-generic/lists/singlylinkedlist"
 	lls "github.com/ugurcsen/gods-generic/stacks/linkedliststack"
 )
 
 func RearrangeCratesMulti(input string) string {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFn := io.GetScanner(input)

@@ -1,13 +1,13 @@
 package parts
 
 import (
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 )
 
 func SuppliesPriorityTotal(input string) int {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)
@@ -22,7 +22,7 @@ func SuppliesPriorityTotal(input string) int {
 
 const (
 	// Subtracting 'A' from all chars, the max difference will be 'z' (122) - 'A' (65) = 57
-	// Adding 1 to the difference to account for the 0 index
+	// Adding 1 to the difference to account for the 0 index.
 	maxLetterDifference = 'z' - 'A' + 1
 )
 

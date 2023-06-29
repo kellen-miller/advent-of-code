@@ -3,13 +3,13 @@ package parts
 import (
 	"strings"
 
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 )
 
 func OverlappingSections(input string) int {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)

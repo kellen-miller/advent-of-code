@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"adventofcode/internal/2022/day4/parts"
+	"github.com/kellen-miller/advent-of-code/go/internal/2022/day4/parts"
 )
 
 func main() {

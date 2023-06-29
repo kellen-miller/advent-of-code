@@ -1,8 +1,8 @@
 package parts
 
 import (
-	"adventofcode/internal"
-	"adventofcode/pkg/io"
+	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 )
 
 const (
@@ -11,7 +11,7 @@ const (
 
 func SetRoundResult(input string) int {
 	if input == "" {
-		input = internal.Input
+		input = common.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)
@@ -43,7 +43,7 @@ func SetRoundResult(input string) int {
 		case draw:
 			total += oppChoice
 		case loss:
-			total += (oppChoice + 2) % choices //nolint:gomnd
+			total += (oppChoice + 2) % choices
 		}
 	}
 
