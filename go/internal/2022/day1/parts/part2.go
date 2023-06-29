@@ -6,7 +6,6 @@ import (
 	"adventofcode/internal"
 	"adventofcode/pkg/io"
 	"adventofcode/pkg/structures"
-
 	"github.com/ugurcsen/gods-generic/trees/binaryheap"
 )
 

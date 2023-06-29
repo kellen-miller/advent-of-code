@@ -14,8 +14,8 @@ func BadgePriorityTotal(input string) int {
 		input = internal.Input
 	}
 
-	sc, closeFile := io.GetScanner(input)
-	defer closeFile()
+	sc, closeFn := io.GetScanner(input)
+	defer closeFn()
 
 	var total int
 	for {

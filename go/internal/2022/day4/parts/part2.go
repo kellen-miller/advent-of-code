@@ -19,14 +19,17 @@ func OverlappingSections(input string) int {
 	for sc.Scan() {
 		total += isOverlap(sc.Text())
 	}
+
 	return total
 }
 
 func isOverlap(pairs string) int {
-	elves := strings.Split(pairs, ",")
+	var (
+		elves = strings.Split(pairs, ",")
 
-	elf1Min, elf1Max := getElfSections(elves[0])
-	elf2Min, elf2Max := getElfSections(elves[1])
+		elf1Min, elf1Max = getElfSections(elves[0])
+		elf2Min, elf2Max = getElfSections(elves[1])
+	)
 
 	if (elf1Min <= elf2Min && elf2Min <= elf1Max) ||
 		(elf2Min <= elf1Min && elf1Min <= elf2Max) {

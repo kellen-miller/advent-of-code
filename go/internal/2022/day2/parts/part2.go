@@ -43,7 +43,7 @@ func SetRoundResult(input string) int {
 		case draw:
 			total += oppChoice
 		case loss:
-			total += (oppChoice + 2) % choices
+			total += (oppChoice + 2) % choices //nolint:gomnd
 		}
 	}
 

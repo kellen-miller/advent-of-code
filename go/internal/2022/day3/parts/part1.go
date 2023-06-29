@@ -31,6 +31,7 @@ func letterScore(letter rune) int {
 	if letter > 'Z' {
 		return int(letter-'a') + 1
 	}
+
 	// 'A' - 'A' = 0 + 26 + 1 = 27
 	return int(letter-'A') + 26 + 1
 }

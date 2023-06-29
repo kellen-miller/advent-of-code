@@ -13,21 +13,24 @@ func RedundantCleanup(input string) int {
 		input = internal.Input
 	}
 
-	sc, closeFile := io.GetScanner(input)
-	defer closeFile()
+	sc, closeFn := io.GetScanner(input)
+	defer closeFn()
 
 	var total int
 	for sc.Scan() {
 		total += isAssignmentRedundant(sc.Text())
 	}
+
 	return total
 }
 
 func isAssignmentRedundant(pairs string) int {
-	elves := strings.Split(pairs, ",")
+	var (
+		elves = strings.Split(pairs, ",")
 
-	elf1Min, elf1Max := getElfSections(elves[0])
-	elf2Min, elf2Max := getElfSections(elves[1])
+		elf1Min, elf1Max = getElfSections(elves[0])
+		elf2Min, elf2Max = getElfSections(elves[1])
+	)
 
 	if (elf1Min <= elf2Min && elf1Max >= elf2Max) ||
 		(elf2Min <= elf1Min && elf2Max >= elf1Max) {
@@ -38,8 +41,12 @@ func isAssignmentRedundant(pairs string) int {
 }
 
 func getElfSections(elf string) (int, int) {
-	sections := strings.Split(elf, "-")
-	section1, _ := strconv.Atoi(sections[0])
-	section2, _ := strconv.Atoi(sections[1])
+	var (
+		sections = strings.Split(elf, "-")
+
+		section1, _ = strconv.Atoi(sections[0])
+		section2, _ = strconv.Atoi(sections[1])
+	)
+
 	return section1, section2
 }
