@@ -51,12 +51,12 @@ func (l *Logger) convFields(logFields watermill.LogFields) []zap.Field {
 	zfs := make([]zap.Field, len(l.logFields)+len(logFields))
 	i := 0
 
-	for k, v := range l.logFields {
+	for k, v := range l.logFields { // add base fields first
 		zfs[i] = zap.Any(k, v)
 		i++
 	}
 
-	for k, v := range logFields {
+	for k, v := range logFields { // add passed fields
 		zfs[i] = zap.Any(k, v)
 		i++
 	}
