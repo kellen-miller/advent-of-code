@@ -1,7 +1,7 @@
 package parts
 
 import (
-	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/internal"
 	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 )
 
@@ -11,7 +11,7 @@ const (
 
 func SetRoundResult(input string) int {
 	if input == "" {
-		input = common.Input
+		input = internal.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)

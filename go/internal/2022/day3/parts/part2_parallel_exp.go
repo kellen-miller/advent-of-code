@@ -3,13 +3,13 @@ package parts
 import (
 	"sync"
 
-	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/internal"
 	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 )
 
 func BadgePriorityTotalParallelGroups(input string) int {
 	if input == "" {
-		input = common.Input
+		input = internal.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)
@@ -47,7 +47,7 @@ func BadgePriorityTotalParallelGroups(input string) int {
 
 func BadgePriorityTotalChannels(input string) int {
 	if input == "" {
-		input = common.Input
+		input = internal.Input
 	}
 
 	sc, closeFile := io.GetScanner(input)

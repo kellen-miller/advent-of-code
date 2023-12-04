@@ -1,7 +1,7 @@
 package parts
 
 import (
-	"github.com/kellen-miller/advent-of-code/go/internal/common"
+	"github.com/kellen-miller/advent-of-code/go/internal"
 	"github.com/kellen-miller/advent-of-code/go/pkg/io"
 	hs "github.com/ugurcsen/gods-generic/sets/hashset"
 )
@@ -13,7 +13,7 @@ const (
 
 func StartOfPacket(input string) []int {
 	if input == "" {
-		input = common.Input
+		input = internal.Input
 	}
 
 	sc, closeFn := io.GetScanner(input)

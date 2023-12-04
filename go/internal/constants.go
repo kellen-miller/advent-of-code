@@ -1,4 +1,4 @@
-package common
+package internal
 
 const (
 	Input = "input.txt"

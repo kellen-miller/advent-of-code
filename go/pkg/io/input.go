@@ -2,15 +2,14 @@ package io
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 )
 
 func OpenFile(relativePath string) (*os.File, func()) {
 	pwd, err := os.Getwd()
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatal(err.Error())
 	}
 
 	fullPath := pwd + "/" + relativePath
@@ -20,9 +19,8 @@ func OpenFile(relativePath string) (*os.File, func()) {
 	}
 
 	closeFunc := func() {
-		err := file.Close()
-		if err != nil {
-			panic(err)
+		if err := file.Close(); err != nil {
+			log.Println(err.Error())
 		}
 	}
 
