@@ -1,8 +1,6 @@
-package day1
+package day2
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestPart1(t *testing.T) {
 	tcs := map[string]struct {
@@ -10,22 +8,22 @@ func TestPart1(t *testing.T) {
 		want  int
 	}{
 		"example": {
-			input: "example1.txt",
-			want:  142,
+			input: "example.txt",
+			want:  8,
 		},
 		"input": {
 			input: "input.txt",
-			want:  54630,
+			want:  2593,
 		},
 	}
 
 	for name, tc := range tcs {
 		t.Run(name, func(t *testing.T) {
-			got := Calibration(tc.input)
+			got := GamesPossibleSum(tc.input)
 			if got != tc.want && tc.want != 0 {
-				t.Errorf("Calibration = %d; want %d", got, tc.want)
+				t.Errorf("GamesPossibleSum = %d; want %d", got, tc.want)
 			} else {
-				t.Logf("Calibration = %d", got)
+				t.Logf("GamesPossibleSum = %d", got)
 			}
 		})
 	}
@@ -37,22 +35,22 @@ func TestPart2(t *testing.T) {
 		want  int
 	}{
 		"example": {
-			input: "example2.txt",
-			want:  281,
+			input: "example.txt",
+			want:  2286,
 		},
 		"input": {
 			input: "input.txt",
-			want:  54770,
+			want:  54699,
 		},
 	}
 
 	for name, tc := range tcs {
 		t.Run(name, func(t *testing.T) {
-			got := CalibrationSpelled(tc.input)
+			got := GamesPossiblePowerSum(tc.input)
 			if got != tc.want && tc.want != 0 {
-				t.Errorf("CalibrationSpelled = %d; want %d", got, tc.want)
+				t.Errorf("GamesPossiblePowerSum = %d; want %d", got, tc.want)
 			} else {
-				t.Logf("CalibrationSpelled = %d", got)
+				t.Logf("GamesPossiblePowerSum = %d", got)
 			}
 		})
 	}

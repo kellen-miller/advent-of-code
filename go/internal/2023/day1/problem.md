@@ -28,10 +28,6 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 
 Consider your entire calibration document. What is the sum of all of the calibration values?
 
-### Answer
-
-54630
-
 ## Part Two
 
 Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: one, two,
