@@ -20,18 +20,14 @@ func GamesPossiblePowerSum(input string) int {
 	var sum int
 
 	for sc.Scan() {
-		line := sc.Text()
-
-		maxes, possible := parseRoundsPower(line)
-		if possible {
-			sum += maxes.Red * maxes.Green * maxes.Blue
-		}
+		maxes := parseRoundsPower(sc.Text())
+		sum += maxes.Red * maxes.Green * maxes.Blue
 	}
 
 	return sum
 }
 
-func parseRoundsPower(line string) (*CubeMaxes, bool) {
+func parseRoundsPower(line string) *CubeMaxes {
 	const gamePartsWant = 2
 
 	gameParts := strings.Split(line, ":")
@@ -42,16 +38,14 @@ func parseRoundsPower(line string) (*CubeMaxes, bool) {
 	maxesSeen := new(CubeMaxes)
 	for _, round := range strings.Split(gameParts[1], ";") {
 		for _, cube := range strings.Split(round, ",") {
-			if !parseRoundPower(cube, maxesSeen) {
-				return nil, false
-			}
+			parseCubePower(cube, maxesSeen)
 		}
 	}
 
-	return maxesSeen, true
+	return maxesSeen
 }
 
-func parseRoundPower(cube string, maxesSeen *CubeMaxes) bool {
+func parseCubePower(cube string, maxesSeen *CubeMaxes) {
 	const cubePartsWant = 2
 
 	cubeParts := strings.Split(strings.TrimSpace(cube), " ")
@@ -80,6 +74,4 @@ func parseRoundPower(cube string, maxesSeen *CubeMaxes) bool {
 	default:
 		panic("unknown cube color")
 	}
-
-	return true
 }

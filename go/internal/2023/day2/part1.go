@@ -18,20 +18,14 @@ func GamesPossibleSum(input string) int {
 	defer closeFile()
 
 	var sum int
-
 	for sc.Scan() {
-		line := sc.Text()
-
-		id, possible := parseGame(line)
-		if possible {
-			sum += id
-		}
+		sum += parseGame(sc.Text())
 	}
 
 	return sum
 }
 
-func parseGame(line string) (int, bool) {
+func parseGame(line string) int {
 	const gamePartsWant = 2
 
 	gameParts := strings.Split(line, ":")
@@ -39,7 +33,11 @@ func parseGame(line string) (int, bool) {
 		panic("invalid game")
 	}
 
-	return parseID(gameParts[0]), parseRounds(gameParts[1])
+	if !parseRounds(gameParts[1]) {
+		return 0
+	}
+
+	return parseID(gameParts[0])
 }
 
 func parseID(gamePart string) int {
@@ -61,7 +59,7 @@ func parseID(gamePart string) int {
 func parseRounds(roundPart string) bool {
 	for _, round := range strings.Split(roundPart, ";") {
 		for _, cube := range strings.Split(round, ",") {
-			if !parseCube(cube) {
+			if !isCubeValid(cube) {
 				return false
 			}
 		}
@@ -70,7 +68,7 @@ func parseRounds(roundPart string) bool {
 	return true
 }
 
-func parseCube(cube string) bool {
+func isCubeValid(cube string) bool {
 	const cubePartsWant = 2
 
 	cubeParts := strings.Split(strings.TrimSpace(cube), " ")
